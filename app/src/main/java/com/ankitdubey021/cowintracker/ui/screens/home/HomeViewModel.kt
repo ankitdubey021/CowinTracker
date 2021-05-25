@@ -1,8 +1,10 @@
 package com.ankitdubey021.cowintracker.ui.screens.home
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.*
+import com.ankitdubey021.cowintracker.data.AppointmentEntity
+import com.ankitdubey021.cowintracker.data.DistrictEntity
+import com.ankitdubey021.cowintracker.data.DistrictList
 import com.ankitdubey021.cowintracker.data.StateEntity
 import com.ankitdubey021.cowintracker.repository.CowinRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,12 +22,34 @@ class HomeViewModel @Inject constructor(
     }
 
     private val _stateLiveData = MutableLiveData<List<StateEntity>>()
-    val stateLiveData = _stateLiveData
+    val stateLiveData : LiveData<List<StateEntity>> = _stateLiveData
+
+    private val _districtLiveData = MutableLiveData<List<DistrictEntity>>()
+    val districtLiveData : LiveData<List<DistrictEntity>> = _districtLiveData
+
+    private val _appointments = MutableLiveData<List<AppointmentEntity>>()
+    val appointments : LiveData<List<AppointmentEntity>> = _appointments
 
     fun fetchStates(){
         viewModelScope.launch {
             cowinRepository.fetchStates().collect {
                 _stateLiveData.postValue(it.states)
+            }
+        }
+    }
+
+    fun fetchDistricts(stateId : Int){
+        viewModelScope.launch {
+            cowinRepository.fetchDistricts(stateId).collect {
+                _districtLiveData.postValue(it.districts)
+            }
+        }
+    }
+
+    fun getAppointments(districtId : Int){
+        viewModelScope.launch {
+            cowinRepository.getAppointmentStatus(districtId = districtId).collect {
+                _appointments.postValue(it.sessions)
             }
         }
     }

@@ -3,38 +3,55 @@ package com.ankitdubey021.cowintracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
-import com.ankitdubey021.cowintracker.ui.screens.CowinHome
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.ankitdubey021.cowintracker.ui.screens.appointment.AppointmentScreen
+import com.ankitdubey021.cowintracker.ui.screens.home.CowinHome
 import com.ankitdubey021.cowintracker.ui.screens.home.HomeViewModel
 import com.ankitdubey021.cowintracker.ui.theme.CowinTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        lifecycleScope.launch {
-            homeViewModel.fetchStates()
-        }
 
         setContent {
             CowinTrackerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    CowinHome(homeViewModel)
+                    ComposeNavigation()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun ComposeNavigation() {
+    val navController = rememberNavController()
+    val homeViewModel = hiltViewModel<HomeViewModel>()
+
+    NavHost(
+        navController = navController,
+        startDestination = "home"
+    ) {
+        composable("home") {
+            CowinHome(navController, homeViewModel)
+        }
+        composable("appoints/{dist}") { backStackEntry ->
+            AppointmentScreen(
+                navController = navController,
+                homeViewModel,
+                backStackEntry.arguments?.getString("dist")
+            )
         }
     }
 }
@@ -43,6 +60,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     CowinTrackerTheme {
-        CowinHome()
     }
 }

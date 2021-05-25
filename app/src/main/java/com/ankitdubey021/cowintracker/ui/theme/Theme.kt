@@ -5,17 +5,32 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
     primary = Pink,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    onSecondary = Color.White,
+    background = Color.Black,
+    onBackground = Color.White,
+    surface = Color.Black,
+    onSurface = Color.White,
+    error = Red,
+    onError = Color.Black
+
 )
 
 private val LightColorPalette = lightColors(
     primary = Magenta,
     primaryVariant = Red,
-    secondary = WhiteGray
+    secondary = WhiteGray,
+    onSurface = Color.Black,
+    onSecondary = Color.Black,
+    background = Color.White,
+    onBackground = Color.Black,
+    surface = Color.White,
+    error = Red,
 
     /* Other default colors to override
     background = Color.White,

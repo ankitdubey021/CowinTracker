@@ -69,9 +69,9 @@ val Typography = Typography(
         fontSize = 14.sp
     ),
     caption = TextStyle(
-        fontFamily = MontSerrat,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontWeight = FontWeight.W500,
+        fontSize = 12.sp,
+        letterSpacing = 0.4.sp
     ),
     button = TextStyle(
         fontFamily = MontSerrat,

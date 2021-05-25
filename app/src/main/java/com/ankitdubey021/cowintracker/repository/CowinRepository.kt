@@ -1,18 +1,27 @@
 package com.ankitdubey021.cowintracker.repository
 
-import android.util.Log
-import com.ankitdubey021.cowintracker.data.BlogNetworkEntity
+import com.ankitdubey021.cowintracker.data.AppointmentSessions
+import com.ankitdubey021.cowintracker.data.DistrictList
 import com.ankitdubey021.cowintracker.data.StateList
 import com.ankitdubey021.cowintracker.networking.CowinApiClient
+import com.ankitdubey021.cowintracker.utils.toDateStr
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import okhttp3.ResponseBody
-import retrofit2.Call
+import java.util.*
 
 class CowinRepository constructor(
-    val apiClient: CowinApiClient
-){
-    suspend fun fetchStates() : Flow<StateList> = flow {
-     emit(apiClient.getStates())
+    private val apiClient: CowinApiClient
+) {
+    suspend fun fetchStates(): Flow<StateList> = flow {
+        emit(apiClient.getStates())
+    }
+
+    suspend fun fetchDistricts(stateId: Int): Flow<DistrictList> = flow {
+        emit(apiClient.getDistricts(stateId = stateId))
+    }
+
+    suspend fun getAppointmentStatus(districtId: Int): Flow<AppointmentSessions> = flow {
+        val date = Date().toDateStr("dd-MM-yyyy")
+        emit(apiClient.getAppointmentByDistrict(districtId, date))
     }
 }
