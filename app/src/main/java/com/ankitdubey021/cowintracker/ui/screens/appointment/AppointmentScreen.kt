@@ -22,7 +22,9 @@ fun AppointmentScreen(navController: NavController, viewModel: HomeViewModel, di
     val appointments = viewModel.appointments.observeAsState()
 
     Scaffold(
-        topBar = { CowinToolbar() }
+        topBar = { CowinToolbar(onBackClicked = {
+            navController.navigateUp()
+        }) }
     ){
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             Card(modifier = Modifier.fillMaxWidth()) {

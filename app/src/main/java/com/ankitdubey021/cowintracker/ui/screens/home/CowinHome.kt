@@ -11,14 +11,11 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.ankitdubey021.cowintracker.ui.CowinToolbar
 import com.ankitdubey021.cowintracker.ui.DropdownDemo
 import com.ankitdubey021.cowintracker.ui.theme.WhiteGray
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 
 @Composable

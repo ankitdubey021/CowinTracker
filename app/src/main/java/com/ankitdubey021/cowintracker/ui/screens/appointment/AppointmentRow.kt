@@ -1,13 +1,12 @@
 package com.ankitdubey021.cowintracker.ui.screens.appointment
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Card
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.ankitdubey021.cowintracker.data.AppointmentEntity
 
@@ -19,13 +18,35 @@ fun AppointmentRow(appointmentEntity: AppointmentEntity){
 
 @Composable
 fun BaseRow(appointmentEntity: AppointmentEntity){
-    Box(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
 
     ) {
-        Text(text = appointmentEntity.address)
+        val addrs = mutableListOf(
+            appointmentEntity.address,
+            appointmentEntity.distName,
+            appointmentEntity.stateName,
+            appointmentEntity.pincode,
+        ).joinToString(", ")
+
+        Box(
+            Modifier
+                .weight(1F)
+        ){
+            Column {
+                Text(text = appointmentEntity.name, style = MaterialTheme.typography.subtitle1)
+                Text(text = addrs, style = MaterialTheme.typography.caption.copy(fontWeight = FontWeight.W400))
+            }
+        }
+        Box(
+            /*contentAlignment = Alignment.CenterEnd*/
+        ){
+            IconButton(onClick = {  }) {
+                Icon(Icons.Filled.ChevronRight, "")
+            }
+        }
     }
 }
 

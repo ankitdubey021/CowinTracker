@@ -4,16 +4,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ankitdubey021.cowintracker.ui.theme.CowinTrackerTheme
-import com.ankitdubey021.cowintracker.ui.theme.WhiteGray
 
 @Composable
 fun DropdownDemo(items: MutableList<String>, onItemSelected: (Int) -> Unit) {
@@ -81,13 +81,19 @@ fun DropdownDemo(items: MutableList<String>, onItemSelected: (Int) -> Unit) {
 }
 
 @Composable
-fun CowinToolbar(){
+fun CowinToolbar(onBackClicked: (() -> Unit)? = null) {
+
     TopAppBar(
         title = {
             Text(text = "Cowin Tracker", style = MaterialTheme.typography.h3)
         },
         elevation = 0.dp,
         backgroundColor = MaterialTheme.colors.primary,
+        navigationIcon = if (onBackClicked == null) null else ({
+            IconButton(onClick = onBackClicked) {
+                Icon(Icons.Filled.ArrowBack, "back")
+            }
+        })
     )
 }
 
