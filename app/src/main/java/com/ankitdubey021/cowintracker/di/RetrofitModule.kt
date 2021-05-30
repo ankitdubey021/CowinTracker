@@ -1,5 +1,6 @@
 package com.ankitdubey021.cowintracker.di
 
+import com.ankitdubey021.cowintracker.networking.CovidReportApiClient
 import com.ankitdubey021.cowintracker.networking.CowinApiClient
 import dagger.Module
 import dagger.Provides
@@ -33,6 +34,20 @@ object RetrofitModule {
     fun provideApiClient(retrofit: Retrofit): CowinApiClient {
         return retrofit.create(CowinApiClient::class.java)
     }
+
+
+    @Singleton
+    @Provides
+    fun provideCovidCasesApiClient(okHttpClient: OkHttpClient): CovidReportApiClient {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.covid19india.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
+        return retrofit.create(CovidReportApiClient::class.java)
+    }
+
+
 
     @Singleton
     @Provides

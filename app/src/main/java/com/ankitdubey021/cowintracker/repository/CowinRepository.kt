@@ -20,8 +20,7 @@ class CowinRepository constructor(
         emit(apiClient.getDistricts(stateId = stateId))
     }
 
-    suspend fun getAppointmentStatus(districtId: Int): Flow<AppointmentSessions> = flow {
-        val date = Date().toDateStr("dd-MM-yyyy")
-        emit(apiClient.getAppointmentByDistrict(districtId, date))
+    suspend fun getAppointmentStatus(dateStr : String, districtId: Int): Flow<AppointmentSessions> = flow {
+        emit(apiClient.getAppointmentByDistrict(districtId, dateStr))
     }
 }

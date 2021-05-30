@@ -11,9 +11,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ankitdubey021.cowintracker.data.HospitalEntity
 import com.ankitdubey021.cowintracker.ui.screens.appointment.AppointmentScreen
+import com.ankitdubey021.cowintracker.ui.screens.cases_screen.CovidCase
+import com.ankitdubey021.cowintracker.ui.screens.cases_screen.CovidReportViewModel
 import com.ankitdubey021.cowintracker.ui.screens.home.CowinHome
 import com.ankitdubey021.cowintracker.ui.screens.home.HomeViewModel
+import com.ankitdubey021.cowintracker.ui.screens.hospital_detail_screen.HospitalDetail
 import com.ankitdubey021.cowintracker.ui.theme.CowinTrackerTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,20 +41,39 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeNavigation() {
     val navController = rememberNavController()
+
     val homeViewModel = hiltViewModel<HomeViewModel>()
 
     NavHost(
         navController = navController,
-        startDestination = "home"
+        startDestination = "main"
     ) {
+        composable("main") {
+            val viewModel = hiltViewModel<CovidReportViewModel>()
+            CovidCase(navController, viewModel)
+            /*HospitalDetail(
+                navController = navController,
+                homeViewModel,
+                ""
+            )*/
+        }
         composable("home") {
             CowinHome(navController, homeViewModel)
         }
-        composable("appoints/{dist}") { backStackEntry ->
+        composable("appoints?distId={dist}&date={sDate}") { backStackEntry ->
             AppointmentScreen(
                 navController = navController,
                 homeViewModel,
-                backStackEntry.arguments?.getString("dist")
+                backStackEntry.arguments?.getString("dist"),
+                backStackEntry.arguments?.getString("sDate")
+            )
+        }
+
+        composable("hospital_detail/{hospital_id}") { backStackEntry ->
+            HospitalDetail(
+                navController = navController,
+                homeViewModel,
+                backStackEntry.arguments?.getString("hospital_id")
             )
         }
     }

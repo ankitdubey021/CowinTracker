@@ -22,4 +22,9 @@
     <style name="Theme.CowinTracker.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.CowinTracker.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="CalenderViewCustom" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+
+    </style>
+
 </resources>

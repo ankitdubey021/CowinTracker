@@ -1,11 +1,11 @@
-package com.ankitdubey021.cowintracker.ui
+package com.ankitdubey021.cowintracker.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,13 +46,18 @@ fun DropdownDemo(items: MutableList<String>, onItemSelected: (Int) -> Unit) {
                         expanded = true
                 }
         ) {
-            Text(
-                text = if (items.size < 2) "" else items[selectedIndex],
-                style = MaterialTheme.typography.subtitle1.copy(color = Color.Black),
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 18.dp, horizontal = 16.dp)
-            )
+                    .padding(vertical = 18.dp, horizontal = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ){
+                Text(
+                    text = if (items.size < 2) "" else items[selectedIndex],
+                    style = MaterialTheme.typography.subtitle1.copy(color = Color.Black),
+                )
+                Icon(Icons.Filled.KeyboardArrowDown,"calendar", tint = Color.DarkGray)
+            }
         }
 
         DropdownMenu(
@@ -80,22 +85,6 @@ fun DropdownDemo(items: MutableList<String>, onItemSelected: (Int) -> Unit) {
     }
 }
 
-@Composable
-fun CowinToolbar(onBackClicked: (() -> Unit)? = null) {
-
-    TopAppBar(
-        title = {
-            Text(text = "Cowin Tracker", style = MaterialTheme.typography.h3)
-        },
-        elevation = 0.dp,
-        backgroundColor = MaterialTheme.colors.primary,
-        navigationIcon = if (onBackClicked == null) null else ({
-            IconButton(onClick = onBackClicked) {
-                Icon(Icons.Filled.ArrowBack, "back")
-            }
-        })
-    )
-}
 
 @Preview(showBackground = true)
 @Composable
