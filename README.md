@@ -12,7 +12,7 @@
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
-<img src="/media/img1.png" width="260">&emsp;<img src="/media.img2.png" width="260">&emsp;<img src="/media/img3.png" width="260">
+<img src="/media/img2.png" width="260">&emsp;<img src="/media/img3.png" width="260">&emsp;<img src="/media/img1.png" width="260">
 
 ## License
 ```
