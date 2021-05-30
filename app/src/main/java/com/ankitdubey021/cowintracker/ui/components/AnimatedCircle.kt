@@ -1,4 +1,4 @@
-package com.ankitdubey021.cowintracker.utils
+package com.ankitdubey021.cowintracker.ui.components
 
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing

@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.ankitdubey021.cowintracker.R
 import com.ankitdubey021.cowintracker.data.*
+import com.ankitdubey021.cowintracker.ui.components.AnimatedCircle
 import com.ankitdubey021.cowintracker.ui.theme.Magenta
 import com.ankitdubey021.cowintracker.ui.theme.WhiteGray
-import com.ankitdubey021.cowintracker.utils.AnimatedCircle
 import com.ankitdubey021.cowintracker.utils.formatNumber
 
 @Composable

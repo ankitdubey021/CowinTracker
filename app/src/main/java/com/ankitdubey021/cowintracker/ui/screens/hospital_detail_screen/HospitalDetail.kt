@@ -213,7 +213,7 @@ private fun DoseCounter(dose1: Int, dose2: Int) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = dose2.toString(), style = MaterialTheme.typography.h1.copy(color = if(dose1 == 0) Red else Color.Black))
+                Text(text = dose2.toString(), style = MaterialTheme.typography.h1.copy(color = if(dose2 == 0) Red else Color.Black))
                 Text(text = "Dose 2", style = MaterialTheme.typography.body1)
             }
         }
