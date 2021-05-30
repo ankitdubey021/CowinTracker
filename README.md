@@ -6,7 +6,7 @@
 
 ***You can download and test the app from here***
 
-[![Cowin Tracker](https://img.shields.io/badge/CowinTracker-APK-green.svg?style=for-the-badge&logo=android)](https://github.com/ankitdubey021/CowinTracker/release/cowin_tracker.apk)
+[![Cowin Tracker](https://img.shields.io/badge/CowinTracker-APK-green.svg?style=for-the-badge&logo=android)](https://github.com/ankitdubey021/CowinTracker/releases/download/v1.0-alpha/cowin_tracker.apk)
 
 
 
