@@ -3,7 +3,7 @@
 # Cowin Tracker
 
 **Cowin Tracker** is a sample android app entirely written in Jetpack Compose. 
-- Although this app reports Covid cases and Vaccine slot, but result displayed in app might not be accurate. App is only for learning purpose.
+- Although this app reports Covid cases and available Vaccine slots, but result displayed in app might not be accurate. App is only for learning purpose.
 
 ***You can download and test the app from here***
 
