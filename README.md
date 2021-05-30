@@ -8,6 +8,9 @@
 
 [![Cowin Tracker](https://img.shields.io/badge/CowinTracker-APK-green.svg?style=for-the-badge&logo=android)](https://github.com/ankitdubey021/CowinTracker/releases/download/v1.0-alpha/cowin_tracker.apk)
 
+## About
+This app demonstrates all the basic functionalities of android app in Jetpack Compose API. 
+it uses some open source APIs e.g. https://api.covid19india.org/ and https://cdn-api.co-vin.in/api/
 
 
 ## :camera_flash: Screenshots
