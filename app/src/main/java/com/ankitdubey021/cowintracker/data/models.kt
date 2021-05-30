@@ -49,12 +49,16 @@ data class HospitalEntity(
     val from: String,
     val to: String,
     val date: String,
+    val vaccine: String,
+    val slots : List<String>,
 
     @SerializedName("available_capacity_dose1")
     val availableCapacityDose1: Int,
 
     @SerializedName("available_capacity_dose2")
-    val availableCapacityDose2: Int
+    val availableCapacityDose2: Int,
+    @SerializedName("min_age_limit")
+    val minAgeLimit : Int
 ):Serializable
 
 data class CovidReportDao(
